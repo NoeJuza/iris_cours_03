@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cours 03 Iris</title>
+</head>
+<body>
+    <header>
+        <div class="title-holder">
+            <h1>VSC et déployement sur le WEB</h1>
+        </div>
+        <div class="nav-holder">
+            <nav>
+                <a target="_blank" href="https://git-scm.com/download/win">Git</a>
+                <a target="_blank" href="https://github.com/">Github</a>
+                <a target="_blank" href="https://vercel.com/">Vercel</a>
+                <a target="_blank" href="">Site déployé</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h2>Préambule: Terminal et lignes de comandes</h2>
+            <p>Pour executer des lignes de commandes dans windows, on va utiliser l'invite de commande qui se lance en appuyant sur la touche windows pour lancer le menu démarrer puis il suffit de taper "cmd" afin d'avoir comme proposition un programme appelé "invite de commande"</p>
+            <p>Alternativement, on peut lancer un terminal (invite de commande) directement dans VSCode et appuyant sur le menu "Terminal" dans la barre en haut, puis en cliquant sur "new terminal"</p>
+            <p>Quelques commandes de base windows:
+                <ul>
+                    <li><code>echo qqch</code> permets d'imprimer "qqch" dans le terminal</li>
+                    <li><code>echo %cd%</code> permets d'imprimer le répertoire courrant dans le terminal</li>
+                    <li><code>dir</code> permets d'afficher les éléments présents dans le répertoire courrant</li>
+                    <li><code>cd chemin</code> permets de changer de répertoire vers le sous-répertoire "chemin", alternativement on peut préciser un chemin absolu pour s'y rendre comme par exemple <code>cd C:\Users</code></li>
+                    <li><code>mkdir "nom de dossier"</code> permets de créer un nouveau dossier nomé <code>nom de dossier</code> dans le dossier courrant</li>
+                </ul>
+            </p>
+        </section>
+        <section>
+            <h2>VCS? Git?</h2>
+            <p>Un VSC (Version Control System) sers à suivre les évolutions d'un ou plusieurs fichiers dans le cours du temps. La problématique à laquelle réponds les solutions de VSC est le problème des versions de fichier, le fait de devoir recréer un fichier _v1 _v2 _v3 ... _vfinale. Avec un VCS on n'a plus besoin de créer plein de versions de fichiers différents, on peut garder un seul projet qu'on modifie au cours du temps.</p>
+            <p>Git c'est un VSC, probablement LE VSC le plus populaire, développé initiallement par le même développeur que le noyau linux, aujourd'hui un projet open-source sur lequel travaille énormément de gens</p>
+        </section>
+        <section>
+            <h2>Comment ça marche?</h2>
+            <p>Dans git on apellera l'ensemble des fichiers traqués par celui-ci un "dépot" (repository), un dépot se constitue de plusieurs fichiers et les informations relatives au dépot sont stoqués dans un  fichier ".git" à la racine de l'arborescence de fichiers du projet</p>
+            <p>Git fonctionne avec un concept "d'arbre" pour traquer les changements apportés à un projet, chaque "noeud" de l'arbre représente un "commit" qui est en gros un "paquet de modifications" aportées par le développeur au projet. Dans git on a quelque chose de très intéressant étant donné que les modifications sont stockées sous forme d'arbre c'est qu'on peut "forker" un dépot (repository) git c'est à dire prendre un dépot existant et créer une "copie" à nous la fusionner plus tard avec le dépot initial afin d'ajouter nos changements au projet.</p>
+            <img src="https://www.growingwiththeweb.com/images/2014/02/23/git-tree.svg" alt="">
+            <p>Git est un outil qui s'utilise principalement en "ligne de commande" (dans le terminal) les commandes les plus importantes sont:</p>
+            <ul>
+                <li><code>git init .</code> permets d'initialiser un dépot (repository) dans le dossier courrant (il s'occupe de créer un ".git" avec des infos de base</li>
+                <li><code>git checkout -B nomDeLaBranche</code> permets de changer la branche courrante (et de la créer si besoin) vers "nomDeLaBranche (la branche par défaut se nomme "main"), en général on va créer une branche par nouvelle fonctionalité dans le projet</li>
+                <li><code>git branch -D nomDeLaBranche</code> permets de supprimer la branche avec le nom "nomDeLaBranche"</li>
+                <li><code>git add .</code> ajoute tous les changements du répertoire courrant a git et les mets dans la partie "staging"</li>
+                <li><code>git commit -am "description du travail effectué"</code> permets de créer un "commit" appelé "description du travail effectué" et ajoute donc un nouveau noeud à la branche courrante</li>
+            </ul>
+            <p>Plein d'autres commandes sont disponibles sur <a href="https://git-scm.com/docs">la documentation oficielle</a></p>
+            <p><a href="https://www.conventionalcommits.org/en/v1.0.0/">Un petit guide pour la nomenclature des commits</a></p>
+            <img src="https://static.packt-cdn.com/products/9781782168454/graphics/8454OS_01_4.jpg" alt="">
+        </section>
+        <section>
+            <h2>GitHub alors?</h2>
+            <p>Si un dépot git représente une échope, GitHub c'est un grand marché, c'est un endroit centralisé ou chaqun peut stocker ses et partager ses repos et ses projets avec git. Accessible n'importe ou, GitHub est utile en tant que solution pour les projets ou on travaille à plusieurs ou même juste pour permettre à n'importe qui d'accéder à nos codes depuis n'importe ou.</p>
+            <p>De nos jours, le compte GitHub fait partie intégrante du CV d'un développeur au même titre qu'un compte linkedin ou autre, le compte github permets de voir comment un développeur écrit du code, si il participe à beaucoup de projet, travaille sur des projets personnels en dehors du travail ou des cours et ainsi de suite.</p>
+        </section>
+        <section>
+            <h2>Repo local VS distant</h2>
+            <p>Pour le moment nous avons uniquement de la partie "locale" de git, afin d'avoir un code accessible par n'importe qui sur github il faut configurer notre dépot local pour qu'il puisse intéragir avec un dépot "distant", pour cela on a quelques commandes pertinantes:</p>
+            <ul>
+                <li><code>git remote add nomDeLaSourceDistante lienversLeRepoDistant</code> permets d'ajouter une source distante nommée "nomDeLaSourceDistante" qui pointe vers le lien passé en paramètre, en général le nom de la source distante sera "origin" et le lien sera un lien github du type: "https://github.com/user/project.git"</li>
+                <li><code>git push nomDeLaSourceDistante nomDeLaBrancheDistante</code> permets de "pousser" votre dernier commit local de la branche courrante vers le repo distant et la branche selectionnée (pour des projets relativement simples ça sera "main" au début si on est seul sur le projet)</li>
+                <li><code>git pull nomDeLaSourceDistante</code> permets de récupérer la dernière version du code disponible sur le dépot distant</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Vercel</h2>
+            <p>Vercel est un hébergeur qui s'intègre super bien avec GitHub et permets de déployer une application web en quelques clics et qui propose un hébergement gratuit.</p>
+        </section>
+        <section>
+            <h2>Tâches</h2>
+            <ul>
+                <li>Installer Git</li>
+                <li>Créer un compte GitHub</li>
+                <li>Ajouter les informations du compte GitHub dans le git cli: <a href="https://docs.github.com/en/get-started/quickstart/set-up-git">petit guide officiel qui explique les différentes étapes</a></li>
+                <li>Créer un compte Vercel en utilisant le compte GitHub précédemment créé</li>
+                <li>Créer un répertoire cours_03 et initialiser un repertorie git dedans</li>
+                <li>Recréer cette page dans cours_03</li>
+                <li>Ajouter, et commit le code de cette page dans un repo GitHub</li>
+                <li>Créer un projet sur Vercel lié au répo GitHub précédemment créé</li>
+                <li>Accéder à la page depuis le web grace à vercel</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <span>NoeJuza - 09.11.2023</span>
+    </footer>
+</body>
+</html>

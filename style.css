@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Inter&display=swap');
+*{
+    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
+}
+html,body{
+    background-color: #98f8f7;
+    height: 100%;
+    margin: 0px;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+header{
+    background-color: #009fa3;
+    height: 10vh;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+main{
+    padding: 1vw;
+    flex-grow: 1;
+}
+a{
+    color: #00d62c;
+}
+footer{
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0px;
+}
+h1{font-size: x-large;}
+h2{font-size: large;}
+.title-holder{
+    margin-left: 1vw;
+}
+.nav-holder{
+    flex-grow: 1;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+code{
+    background-color: black;
+    color: #DBF4A7;
+}
+.demo{
+    background-color: red;
+    color: white;
+}
